@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorelytlQ - Innovative IT Solutions for the Modern World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0066cc;
+            --dark-blue: #004c99;
+            --light-blue: #e6f2ff;
+            --accent-blue: #3399ff;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-text span {
+            color: var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        nav ul li a.active {
+            color: var(--primary-blue);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 200px);
+        }
+
+        .page {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page */
+        .hero {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--medium-gray);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .intro h2 {
+            text-align: center;
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+
+        .intro p {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--medium-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .why-choose-us {
+            background-color: var(--light-gray);
+            padding: 60px 0;
+        }
+
+        .why-choose-us h2 {
+            text-align: center;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        /* About Page */
+        .about-content h2, .services-content h2, .contact-content h2 {
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .mission, .vision {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .mission h3, .vision h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .core-strengths {
+            background-color: var(--light-gray);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .core-strengths h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .strengths-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .strength-item {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Services Page */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-item h3 i {
+            color: var(--primary-blue);
+        }
+
+        /* Contact Page */
+        .contact-content p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .contact-email {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .contact-email:hover {
+            color: var(--dark-blue);
+            background-color: var(--light-blue);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid, .services-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                gap: 8px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .intro, .why-choose-us, .page {
+                padding: 40px 0;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-card {
+                padding: 20px 15px;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-img">
+                    <!-- Square Root of n Logo -->
+                    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background with rounded corners -->
+                        <rect width="50" height="50" rx="8" fill="#0066cc"/>
+                        
+                        <!-- Square root symbol (√) -->
+                        <path d="M15,30 L20,20 L25,25 L30,15" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- The "n" character inside the square root -->
+                        <text x="33" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">n</text>
+                        
+                        <!-- Horizontal line extending from the square root -->
+                        <line x1="30" y1="15" x2="35" y2="15" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="logo-text">Corelytl<span>Q</span></div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <h1>CorelytlQ – Innovative IT Solutions for the Modern World</h1>
+                    <p class="tagline">Transforming businesses with software, cloud, cybersecurity & AI-powered solutions.</p>
+                </div>
+            </div>
+            
+            <div class="intro">
+                <div class="container">
+                    <h2>Welcome to CorelytlQ</h2>
+                    <p>We are a leading IT solutions provider dedicated to helping businesses navigate the digital landscape. Our team of experts combines technical expertise with industry insights to deliver solutions that drive growth, efficiency, and innovation.</p>
+                    <p>At CorelytlQ, we believe in the power of technology to transform organizations and create new opportunities in an increasingly connected world.</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h2 style="text-align: center; color: var(--dark-blue); margin: 40px 0 30px; font-size: 2.2rem;">Our Key Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Solutions & Automation</h3>
+                        <p>Intelligent systems that learn, adapt and automate business processes to drive efficiency.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Software Development</h3>
+                        <p>Custom software solutions tailored to your specific business needs and challenges.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Cybersecurity Solutions</h3>
+                        <p>Protecting your digital assets with advanced security protocols and monitoring systems.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="why-choose-us">
+                <div class="container">
+                    <h2>Why Choose CorelytlQ</h2>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Innovative Approach</h3>
+                            <p>We stay ahead of technology trends to deliver cutting-edge solutions.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h3>Expert Team</h3>
+                            <p>Our certified professionals bring years of industry experience to every project.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Client-Centric</h3>
+                            <p>We prioritize your business goals and work as an extension of your team.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <h3>Timely Delivery</h3>
+                            <p>We respect deadlines and ensure projects are completed on time, every time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="about-page" class="page">
+            <div class="container about-content">
+                <h2>About CorelytlQ</h2>
+                
+                <div class="mission-vision">
+                    <div class="mission">
+                        <h3>Our Mission</h3>
+                        <p>To empower businesses with intelligent, scalable, and secure technology solutions that drive innovation, efficiency, and growth in an increasingly digital world. We aim to be the trusted technology partner for organizations seeking to transform their operations and achieve sustainable success.</p>
+                    </div>
+                    
+                    <div class="vision">
+                        <h3>Our Vision</h3>
+                        <p>To be a globally recognized leader in providing cutting-edge IT solutions that redefine how businesses operate, interact, and thrive in the modern digital economy. We envision a future where technology seamlessly integrates with business strategy to create unprecedented value and opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="core-strengths">
+                    <h3>Core Strengths</h3>
+                    <div class="strengths-list">
+                        <div class="strength-item">
+                            <h4>Expertise Across Technologies</h4>
+                            <p>Deep proficiency in AI, cloud computing, cybersecurity, and software development.</p>
+                        </div>
+                        <div class="strength-item">
+                            <h4>Industry Experience</h4>
+                            <p>Years of experience serving diverse sectors with tailored IT solutions.</p>
+                        </div>
+                        <div class="strength-item">
+                            <h4>Agile Methodology</h4>
+                            <p>Flexible, iterative approach that ensures alignment with client needs.</p>
+                        </div>
+                        <div class="strength-item">
+                            <h4>Quality Assurance</h4>
+                            <p>Rigorous testing and quality control processes for reliable solutions.</p>
+                        </div>
+                        <div class="strength-item">
+                            <h4>Innovation Focus</h4>
+                            <p>Continuous research and adoption of emerging technologies.</p>
+                        </div>
+                        <div class="strength-item">
+                            <h4>Customer Support</h4>
+                            <p>Comprehensive post-deployment support and maintenance services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section id="services-page" class="page">
+            <div class="container services-content">
+                <h2>Our Services</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <h3><i class="fas fa-brain"></i> AI Solutions & Automation</h3>
+                        <p>Implement intelligent systems that automate processes, analyze data, and provide actionable insights. Our AI solutions include machine learning models, natural language processing, and predictive analytics to optimize business operations.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-code"></i> Software Development</h3>
+                        <p>Custom software solutions designed to address your unique business challenges. We develop scalable applications using modern frameworks and best practices in software engineering.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-globe"></i> Web Development</h3>
+                        <p>Responsive, user-friendly websites and web applications that deliver exceptional user experiences. We create both frontend interfaces and backend systems using cutting-edge technologies.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-mobile-alt"></i> Mobile App Development</h3>
+                        <p>Native and cross-platform mobile applications for iOS and Android. We build apps that are intuitive, performant, and aligned with your business objectives.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
+                        <p>Cloud migration, infrastructure setup, and management services. We help businesses leverage AWS, Azure, and Google Cloud for scalability, reliability, and cost-efficiency.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-chart-line"></i> IT Consulting</h3>
+                        <p>Strategic guidance to align technology with business goals. Our consulting services include digital transformation, technology roadmap development, and IT infrastructure assessment.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3><i class="fas fa-shield-alt"></i> Cybersecurity Solutions</h3>
+                        <p>Comprehensive security services including vulnerability assessment, threat monitoring, penetration testing, and implementation of security frameworks to protect your digital assets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact-page" class="page">
+            <div class="container contact-content">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team to discuss how we can help transform your business with innovative IT solutions. We're here to answer your questions and explore opportunities for collaboration.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:admin@corelytlq.com" class="contact-email">admin@corelytlq.com</a></p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--medium-gray);">Click to send us an email directly</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Tiruchirapalli, Tamil Nadu</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--medium-gray);">Serving clients nationwide and globally</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+91 (XXX) XXX-XXXX</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--medium-gray);">Mon-Fri: 9:00 AM - 6:00 PM IST</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="text-align: center; color: var(--dark-blue); margin-bottom: 30px;">Send us a Message</h3>
+                    <p style="text-align: center; margin-bottom: 25px; color: var(--medium-gray);">Prefer to fill out a form? Send us your inquiry and we'll respond within 24 hours.</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <div style="text-align: center; margin-top: 30px; font-size: 0.9rem; color: var(--medium-gray);">
+                            <p>Alternatively, you can email us directly at <a href="mailto:admin@corelytlq.com" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">admin@corelytlq.com</a></p>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Footer version of the logo -->
+                    <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        <rect width="50" height="50" rx="8" fill="#3399ff"/>
+                        <path d="M15,30 L20,20 L25,25 L30,15" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <text x="33" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">n</text>
+                        <line x1="30" y1="15" x2="35" y2="15" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    CorelytlQ
+                </div>
+                <p class="footer-tagline">Empowering Businesses with Intelligence & Innovation. We deliver cutting-edge IT solutions that drive growth, efficiency, and digital transformation for organizations of all sizes.</p>
+                <div style="margin-top: 20px;">
+                    <a href="mailto:admin@corelytlq.com" style="color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1.1rem;">admin@corelytlq.com</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 CorelytlQ – All Rights Reserved. Empowering Businesses with Intelligence & Innovation.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Navigation between pages
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get target page id
+                const targetId = link.getAttribute('href').substring(1);
+                const targetPage = document.getElementById(`${targetId}-page`);
+                
+                // Update active page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                // Update active nav link
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                link.classList.add('active');
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, this would send data to a server
+            // For this demo, we'll simulate sending to admin@corelytlq.com
+            alert(`Thank you ${name}! Your message about "${subject}" has been sent to admin@corelytlq.com. We will respond to ${email} shortly.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Set initial active page based on URL hash
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            const targetPage = document.getElementById(`${hash}-page`);
+            const targetLink = document.querySelector(`.nav-link[href="#${hash}"]`);
+            
+            if (targetPage && targetLink) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                targetPage.classList.add('active');
+                targetLink.classList.add('active');
+            }
+        });
+        
+        // Make the logo clickable to go to home
+        const logoLink = document.querySelector('.logo');
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Update active page
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            document.getElementById('home-page').classList.add('active');
+            
+            // Update active nav link
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            
+            document.querySelector('.nav-link[href="#home"]').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
