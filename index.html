@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CorelytlQ - Innovative IT Solutions for the Modern World</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo.png">
     <style>
         :root {
             --primary-blue: #0066cc;
@@ -18,28 +22,23 @@
             --shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
             --transition: all 0.3s ease;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             color: var(--dark-gray);
             line-height: 1.6;
             background-color: var(--white);
         }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Header & Navigation */
         header {
             background-color: var(--white);
             box-shadow: var(--shadow);
@@ -47,51 +46,42 @@
             top: 0;
             z-index: 1000;
         }
-
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
         }
-
         .logo-img {
             height: 50px;
             width: auto;
         }
-
         .logo-img img {
             height: 100%;
             width: auto;
             object-fit: contain;
         }
-
         .logo-text {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-blue);
         }
-
         .logo-text span {
             color: var(--accent-blue);
         }
-
         nav ul {
             display: flex;
             list-style: none;
         }
-
         nav ul li {
             margin-left: 30px;
         }
-
         nav ul li a {
             text-decoration: none;
             color: var(--dark-gray);
@@ -101,15 +91,12 @@
             padding: 5px 0;
             position: relative;
         }
-
         nav ul li a:hover {
             color: var(--primary-blue);
         }
-
         nav ul li a.active {
             color: var(--primary-blue);
         }
-
         nav ul li a.active::after {
             content: '';
             position: absolute;
@@ -120,7 +107,6 @@
             background-color: var(--primary-blue);
             border-radius: 2px;
         }
-
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -129,36 +115,28 @@
             color: var(--primary-blue);
             cursor: pointer;
         }
-
-        /* Main Content */
         main {
             min-height: calc(100vh - 200px);
         }
-
         .page {
             display: none;
             padding: 60px 0;
         }
-
         .page.active {
             display: block;
         }
-
-        /* Home Page */
         .hero {
             background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
             padding: 80px 0;
             text-align: center;
             border-radius: 0 0 20px 20px;
         }
-
         .hero h1 {
             font-size: 2.8rem;
             color: var(--dark-blue);
             margin-bottom: 20px;
             line-height: 1.2;
         }
-
         .tagline {
             font-size: 1.5rem;
             color: var(--medium-gray);
@@ -167,19 +145,16 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .intro {
             padding: 60px 0;
             background-color: var(--white);
         }
-
         .intro h2 {
             text-align: center;
             color: var(--dark-blue);
             margin-bottom: 30px;
             font-size: 2.2rem;
         }
-
         .intro p {
             max-width: 900px;
             margin: 0 auto 30px;
@@ -187,14 +162,69 @@
             text-align: center;
             color: var(--medium-gray);
         }
-
+        /* Image Styles */
+        .content-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .image-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--white);
+        }
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.15);
+        }
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .image-card-content {
+            padding: 20px;
+            background-color: var(--white);
+        }
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-
         .service-card {
             background-color: var(--white);
             border-radius: 10px;
@@ -203,42 +233,35 @@
             transition: var(--transition);
             text-align: center;
         }
-
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(0, 102, 204, 0.15);
         }
-
         .service-icon {
             font-size: 2.5rem;
             color: var(--primary-blue);
             margin-bottom: 20px;
         }
-
         .service-card h3 {
             color: var(--dark-blue);
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
-
         .why-choose-us {
             background-color: var(--light-gray);
             padding: 60px 0;
         }
-
         .why-choose-us h2 {
             text-align: center;
             color: var(--dark-blue);
             margin-bottom: 40px;
             font-size: 2.2rem;
         }
-
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
-
         .feature {
             background-color: var(--white);
             border-radius: 10px;
@@ -246,79 +269,65 @@
             text-align: center;
             box-shadow: var(--shadow);
         }
-
         .feature i {
             font-size: 2rem;
             color: var(--primary-blue);
             margin-bottom: 15px;
         }
-
         .feature h3 {
             color: var(--dark-blue);
             margin-bottom: 10px;
         }
-
-        /* About Page */
         .about-content h2, .services-content h2, .contact-content h2 {
             color: var(--dark-blue);
             margin-bottom: 30px;
             font-size: 2.2rem;
             text-align: center;
         }
-
         .mission-vision {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
-
         .mission, .vision {
             background-color: var(--white);
             padding: 30px;
             border-radius: 10px;
             box-shadow: var(--shadow);
         }
-
         .mission h3, .vision h3 {
             color: var(--primary-blue);
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
-
         .core-strengths {
             background-color: var(--light-gray);
             padding: 40px;
             border-radius: 10px;
         }
-
         .core-strengths h3 {
             color: var(--primary-blue);
             margin-bottom: 20px;
             font-size: 1.5rem;
             text-align: center;
         }
-
         .strengths-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
-
         .strength-item {
             background-color: var(--white);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
-
-        /* Services Page */
         .services-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
-
         .service-item {
             background-color: var(--white);
             border-radius: 10px;
@@ -326,11 +335,9 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-
         .service-item:hover {
             transform: translateY(-5px);
         }
-
         .service-item h3 {
             color: var(--dark-blue);
             margin-bottom: 15px;
@@ -339,12 +346,9 @@
             align-items: center;
             gap: 10px;
         }
-
         .service-item h3 i {
             color: var(--primary-blue);
         }
-
-        /* Contact Page */
         .contact-content p {
             text-align: center;
             max-width: 700px;
@@ -352,14 +356,12 @@
             color: var(--medium-gray);
             font-size: 1.1rem;
         }
-
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
-
         .contact-card {
             background-color: var(--white);
             padding: 30px;
@@ -368,22 +370,18 @@
             text-align: center;
             transition: var(--transition);
         }
-
         .contact-card:hover {
             transform: translateY(-5px);
         }
-
         .contact-card i {
             font-size: 2.5rem;
             color: var(--primary-blue);
             margin-bottom: 20px;
         }
-
         .contact-card h3 {
             color: var(--dark-blue);
             margin-bottom: 10px;
         }
-
         .contact-email {
             color: var(--primary-blue);
             font-weight: 600;
@@ -394,13 +392,11 @@
             padding: 5px 10px;
             border-radius: 4px;
         }
-
         .contact-email:hover {
             color: var(--dark-blue);
             background-color: var(--light-blue);
             text-decoration: underline;
         }
-
         .contact-form {
             background-color: var(--white);
             padding: 40px;
@@ -409,18 +405,15 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .form-group {
             margin-bottom: 25px;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 8px;
             color: var(--dark-blue);
             font-weight: 600;
         }
-
         .form-control {
             width: 100%;
             padding: 12px 15px;
@@ -429,18 +422,15 @@
             font-size: 1rem;
             transition: var(--transition);
         }
-
         .form-control:focus {
             border-color: var(--primary-blue);
             outline: none;
             box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
-
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-
         .submit-btn {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -454,30 +444,24 @@
             display: block;
             width: 100%;
         }
-
         .submit-btn:hover {
             background-color: var(--dark-blue);
         }
-
-        /* Footer */
         footer {
             background-color: var(--dark-blue);
             color: var(--white);
             padding: 40px 0 20px;
         }
-
         .footer-content {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .footer-logo {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--white);
         }
-
         .footer-logo img {
             height: 30px;
             width: auto;
@@ -485,14 +469,12 @@
             vertical-align: middle;
             margin-right: 10px;
         }
-
         .footer-tagline {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 30px;
             color: rgba(255, 255, 255, 0.8);
         }
-
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -500,23 +482,18 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
-
-        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.3rem;
             }
-            
             .tagline {
                 font-size: 1.3rem;
             }
         }
-
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
             }
-            
             nav ul {
                 position: fixed;
                 top: 80px;
@@ -531,87 +508,74 @@
                 transition: var(--transition);
                 z-index: 999;
             }
-            
             nav ul.active {
                 transform: translateY(0);
             }
-            
             nav ul li {
                 margin: 15px 0;
             }
-            
             .hero h1 {
                 font-size: 2rem;
             }
-            
             .tagline {
                 font-size: 1.1rem;
             }
-            
-            .services-grid, .services-list {
+            .services-grid, .services-list, .image-grid {
                 grid-template-columns: 1fr;
             }
-            
             .contact-form {
                 padding: 30px 20px;
             }
-            
             .logo {
                 gap: 8px;
             }
-            
             .logo-text {
                 font-size: 1.5rem;
             }
+            .content-image {
+                height: 300px;
+            }
         }
-
         @media (max-width: 576px) {
             .hero {
                 padding: 60px 0;
             }
-            
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
             .intro, .why-choose-us, .page {
                 padding: 40px 0;
             }
-            
             .mission-vision {
                 grid-template-columns: 1fr;
             }
-            
             .contact-card {
                 padding: 20px 15px;
             }
-            
             .logo-img {
                 height: 40px;
             }
-            
             .logo-text {
                 font-size: 1.3rem;
+            }
+            .content-image {
+                height: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Logo and Navigation -->
     <header>
         <div class="container header-container">
             <a href="#home" class="logo">
                 <div class="logo-img">
-                    <!-- Your Logo Image -->
                     <img src="logo.png" alt="CorelytlQ Logo">
                 </div>
                 <div class="logo-text">Corelytl<span>Q</span></div>
             </a>
-            
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            
             <nav>
                 <ul id="navMenu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
@@ -623,14 +587,19 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main>
-        <!-- Home Page -->
         <section id="home-page" class="page active">
             <div class="hero">
                 <div class="container">
                     <h1>CorelytlQ – Innovative IT Solutions for the Modern World</h1>
                     <p class="tagline">Transforming businesses with software, cloud, cybersecurity & AI-powered solutions.</p>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="container">
+                <div class="content-image">
+                    Modern IT Solutions & Digital Transformation
                 </div>
             </div>
             
@@ -667,6 +636,37 @@
                         <p>Protecting your digital assets with advanced security protocols and monitoring systems.</p>
                     </div>
                 </div>
+                
+                <!-- Technology Images Grid -->
+                <div class="image-grid">
+                    <div class="image-card">
+                        <div class="service-image">
+                            Artificial Intelligence
+                        </div>
+                        <div class="image-card-content">
+                            <h3>AI & Machine Learning</h3>
+                            <p>Advanced algorithms powering intelligent business solutions</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Cloud Computing
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Cloud Infrastructure</h3>
+                            <p>Scalable cloud solutions for modern businesses</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Cybersecurity
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Data Security</h3>
+                            <p>Protecting your digital assets 24/7</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="why-choose-us">
@@ -698,10 +698,14 @@
             </div>
         </section>
 
-        <!-- About Us Page -->
         <section id="about-page" class="page">
             <div class="container about-content">
                 <h2>About CorelytlQ</h2>
+                
+                <!-- About Us Banner Image -->
+                <div class="content-image">
+                    Our Team & Company Culture
+                </div>
                 
                 <div class="mission-vision">
                     <div class="mission">
@@ -712,6 +716,37 @@
                     <div class="vision">
                         <h3>Our Vision</h3>
                         <p>To be a globally recognized leader in providing cutting-edge IT solutions that redefine how businesses operate, interact, and thrive in the modern digital economy. We envision a future where technology seamlessly integrates with business strategy to create unprecedented value and opportunities.</p>
+                    </div>
+                </div>
+                
+                <!-- Company Values Images -->
+                <div class="image-grid">
+                    <div class="image-card">
+                        <div class="service-image">
+                            Innovation
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Innovation</h3>
+                            <p>Pushing boundaries with cutting-edge technology</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Collaboration
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Collaboration</h3>
+                            <p>Working together to achieve exceptional results</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Excellence
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Excellence</h3>
+                            <p>Delivering quality solutions that exceed expectations</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -747,47 +782,109 @@
             </div>
         </section>
 
-        <!-- Services Page -->
         <section id="services-page" class="page">
             <div class="container services-content">
                 <h2>Our Services</h2>
+                
+                <!-- Services Banner -->
+                <div class="content-image">
+                    Comprehensive IT Services Portfolio
+                </div>
+                
                 <div class="services-list">
                     <div class="service-item">
                         <h3><i class="fas fa-brain"></i> AI Solutions & Automation</h3>
                         <p>Implement intelligent systems that automate processes, analyze data, and provide actionable insights. Our AI solutions include machine learning models, natural language processing, and predictive analytics to optimize business operations.</p>
+                        <div class="service-image">
+                            AI & Machine Learning
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-code"></i> Software Development</h3>
                         <p>Custom software solutions designed to address your unique business challenges. We develop scalable applications using modern frameworks and best practices in software engineering.</p>
+                        <div class="service-image">
+                            Software Development
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-globe"></i> Web Development</h3>
                         <p>Responsive, user-friendly websites and web applications that deliver exceptional user experiences. We create both frontend interfaces and backend systems using cutting-edge technologies.</p>
+                        <div class="service-image">
+                            Web Development
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-mobile-alt"></i> Mobile App Development</h3>
                         <p>Native and cross-platform mobile applications for iOS and Android. We build apps that are intuitive, performant, and aligned with your business objectives.</p>
+                        <div class="service-image">
+                            Mobile Applications
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
                         <p>Cloud migration, infrastructure setup, and management services. We help businesses leverage AWS, Azure, and Google Cloud for scalability, reliability, and cost-efficiency.</p>
+                        <div class="service-image">
+                            Cloud Computing
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-chart-line"></i> IT Consulting</h3>
                         <p>Strategic guidance to align technology with business goals. Our consulting services include digital transformation, technology roadmap development, and IT infrastructure assessment.</p>
+                        <div class="service-image">
+                            IT Consulting
+                        </div>
                     </div>
                     <div class="service-item">
                         <h3><i class="fas fa-shield-alt"></i> Cybersecurity Solutions</h3>
                         <p>Comprehensive security services including vulnerability assessment, threat monitoring, penetration testing, and implementation of security frameworks to protect your digital assets.</p>
+                        <div class="service-image">
+                            Cybersecurity
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology Stack Images -->
+                <div class="image-grid" style="margin-top: 50px;">
+                    <div class="image-card">
+                        <div class="service-image">
+                            Data Analytics
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Data Analytics</h3>
+                            <p>Transforming data into actionable insights</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Cloud Solutions
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Cloud Solutions</h3>
+                            <p>Scalable infrastructure for growth</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            DevOps
+                        </div>
+                        <div class="image-card-content">
+                            <h3>DevOps</h3>
+                            <p>Streamlined development and deployment</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Page -->
         <section id="contact-page" class="page">
             <div class="container contact-content">
                 <h2>Contact Us</h2>
+                
+                <!-- Contact Banner -->
+                <div class="content-image">
+                    Get in Touch with Our Team
+                </div>
+                
                 <p>Get in touch with our team to discuss how we can help transform your business with innovative IT solutions. We're here to answer your questions and explore opportunities for collaboration.</p>
                 
                 <div class="contact-info">
@@ -802,12 +899,18 @@
                         <h3>Location</h3>
                         <p>Tiruchirapalli, Tamil Nadu</p>
                         <p style="margin-top: 10px; font-size: 0.9rem; color: var(--medium-gray);">Serving clients nationwide and globally</p>
+                        <div class="service-image" style="height: 150px;">
+                            Our Office
+                        </div>
                     </div>
                     <div class="contact-card">
                         <i class="fas fa-phone"></i>
                         <h3>Phone</h3>
                         <p>+91 (999) 907-7727</p>
                         <p style="margin-top: 10px; font-size: 0.9rem; color: var(--medium-gray);">Mon-Fri: 9:00 AM - 6:00 PM IST</p>
+                        <div class="service-image" style="height: 150px;">
+                            Support Team
+                        </div>
                     </div>
                 </div>
                 
@@ -842,16 +945,45 @@
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
+                
+                <!-- Office Images -->
+                <div class="image-grid" style="margin-top: 50px;">
+                    <div class="image-card">
+                        <div class="service-image">
+                            Modern Office
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Our Office</h3>
+                            <p>Modern workspace for innovation</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Team Work
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Team Collaboration</h3>
+                            <p>Working together to solve complex challenges</p>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <div class="service-image">
+                            Client Meetings
+                        </div>
+                        <div class="image-card-content">
+                            <h3>Client Meetings</h3>
+                            <p>Understanding your unique business needs</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <!-- Footer version of your logo -->
                     <img src="logo.png" alt="CorelytlQ Logo">
                     CorelytlQ
                 </div>
@@ -867,116 +999,59 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.getElementById('navMenu');
-        
         mobileMenuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
         });
-        
-        // Navigation between pages
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
-        
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                // Get target page id
                 const targetId = link.getAttribute('href').substring(1);
                 const targetPage = document.getElementById(`${targetId}-page`);
-                
-                // Update active page
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                if (targetPage) {
-                    targetPage.classList.add('active');
-                }
-                
-                // Update active nav link
-                navLinks.forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                
+                pages.forEach(page => page.classList.remove('active'));
+                if (targetPage) targetPage.classList.add('active');
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
                 link.classList.add('active');
-                
-                // Close mobile menu if open
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
-                
-                // Scroll to top
                 window.scrollTo(0, 0);
             });
         });
-        
-        // Contact form submission
         const contactForm = document.getElementById('contactForm');
-        
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Get form data
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, this would send data to a server
-            // For this demo, we'll simulate sending to admin@corelytlq.com
             alert(`Thank you ${name}! Your message about "${subject}" has been sent to admin@corelytlq.com. We will respond to ${email} shortly.`);
-            
-            // Reset form
             contactForm.reset();
         });
-        
-        // Set initial active page based on URL hash
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1) || 'home';
             const targetPage = document.getElementById(`${hash}-page`);
             const targetLink = document.querySelector(`.nav-link[href="#${hash}"]`);
-            
             if (targetPage && targetLink) {
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-                
+                pages.forEach(page => page.classList.remove('active'));
+                navLinks.forEach(link => link.classList.remove('active'));
                 targetPage.classList.add('active');
                 targetLink.classList.add('active');
             }
         });
-        
-        // Make the logo clickable to go to home
         const logoLink = document.querySelector('.logo');
         logoLink.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Update active page
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
+            pages.forEach(page => page.classList.remove('active'));
             document.getElementById('home-page').classList.add('active');
-            
-            // Update active nav link
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-            
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
             document.querySelector('.nav-link[href="#home"]').classList.add('active');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         });
     </script>
