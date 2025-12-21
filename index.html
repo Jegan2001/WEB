@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CorelytlQ - Innovative IT Solutions for the Modern World</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Favicon -->
-    <link rel="icon" href="logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="logo.png">
+    
+    <!-- Favicon Configuration -->
+    <!-- Primary favicon from logo.png -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Alternative favicon formats for cross-browser compatibility -->
+    <link rel="shortcut icon" href="logo.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    
+    <!-- Fallback SVG favicon if logo.png is not available -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    
+    <!-- Manifest for PWA (optional) -->
+    <link rel="manifest" href="site.webmanifest">
+    
+    <!-- Theme color for browser/OS theming -->
+    <meta name="theme-color" content="#1a73e8">
+    
     <style>
         :root {
             --primary-blue: #1a73e8;
@@ -93,12 +109,32 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
         }
         
         .logo-img img {
             height: 100%;
             width: auto;
             object-fit: contain;
+            max-width: 50px;
+        }
+        
+        /* Fallback logo if image doesn't load */
+        .logo-img .logo-fallback {
+            display: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 5px;
+        }
+        
+        .logo-img img.error + .logo-fallback {
+            display: block;
         }
         
         .logo-text {
@@ -1149,7 +1185,8 @@
         <div class="container header-container">
             <a href="#home" class="logo">
                 <div class="logo-img">
-                    <img src="logo.png" alt="CorelytlQ Logo">
+                    <img src="logo.png" alt="CorelytlQ Logo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="logo-fallback">CQ</div>
                 </div>
                 <div class="logo-text">Corelytl<span>Q</span></div>
             </a>
@@ -1559,7 +1596,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="CorelytlQ Logo">
+                    <img src="logo.png" alt="CorelytlQ Logo" onerror="this.onerror=null; this.style.display='none'; this.parentNode.innerHTML='CorelytlQ';">
                     CorelytlQ
                 </div>
                 <p class="footer-tagline">Empowering Businesses with Intelligence & Innovation. We deliver cutting-edge IT solutions that drive growth, efficiency, and digital transformation for organizations of all sizes across various industries.</p>
@@ -1766,6 +1803,16 @@
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.loading = 'lazy';
+                // Add error handling for logo images
+                if (img.src.includes('logo.png')) {
+                    img.addEventListener('error', function() {
+                        this.style.display = 'none';
+                        const fallback = this.nextElementSibling;
+                        if (fallback && fallback.classList.contains('logo-fallback')) {
+                            fallback.style.display = 'block';
+                        }
+                    });
+                }
             });
         });
     </script>
