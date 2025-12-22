@@ -7,23 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Favicon Configuration -->
-    <!-- Primary favicon from logo.png -->
     <link rel="icon" type="image/png" href="logo.png">
-    
-    <!-- Alternative favicon formats for cross-browser compatibility -->
     <link rel="shortcut icon" href="logo.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    
-    <!-- Fallback SVG favicon if logo.png is not available -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-    
-    <!-- Manifest for PWA (optional) -->
-    <link rel="manifest" href="site.webmanifest">
-    
-    <!-- Theme color for browser/OS theming -->
-    <meta name="theme-color" content="#1a73e8">
     
     <style>
         :root {
@@ -122,7 +110,6 @@
             max-width: 50px;
         }
         
-        /* Fallback logo if image doesn't load */
         .logo-img .logo-fallback {
             display: none;
             font-size: 1.8rem;
@@ -154,6 +141,7 @@
         
         nav ul li {
             margin-left: 20px;
+            position: relative;
         }
         
         nav ul li a {
@@ -166,6 +154,7 @@
             border-radius: 25px;
             position: relative;
             overflow: hidden;
+            display: block;
         }
         
         nav ul li a:hover {
@@ -215,6 +204,90 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        
+        /* Service Expanders */
+        .service-expander {
+            margin-top: 20px;
+        }
+        
+        .expander-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(26, 115, 232, 0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 4px solid;
+        }
+        
+        .expander-header:hover {
+            background: rgba(26, 115, 232, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .expander-header h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-blue);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .expander-header i {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .expander-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--white);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .expander-content.active {
+            max-height: 500px;
+            padding: 20px;
+            border: 1px solid rgba(26, 115, 232, 0.1);
+            border-top: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .services-sub-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .service-sub-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .service-sub-item:hover {
+            background: rgba(26, 115, 232, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .service-sub-item i {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+        
+        .service-sub-item span {
+            font-weight: 500;
+            color: var(--dark-gray);
         }
         
         /* Hero Section */
@@ -375,6 +448,7 @@
             text-align: center;
             border-top: 6px solid;
             transform: translateY(0);
+            position: relative;
         }
         
         .service-card:hover {
@@ -400,16 +474,6 @@
         .service-card:nth-child(4) {
             border-color: var(--accent-purple);
             background: linear-gradient(135deg, rgba(243, 232, 253, 0.9), rgba(255, 255, 255, 0.95));
-        }
-        
-        .service-card:nth-child(5) {
-            border-color: var(--accent-green);
-            background: linear-gradient(135deg, rgba(225, 247, 234, 0.9), rgba(255, 255, 255, 0.95));
-        }
-        
-        .service-card:nth-child(6) {
-            border-color: var(--accent-orange);
-            background: linear-gradient(135deg, rgba(255, 243, 224, 0.9), rgba(255, 255, 255, 0.95));
         }
         
         .service-icon {
@@ -451,6 +515,28 @@
         .service-card p {
             color: var(--medium-gray);
             line-height: 1.6;
+        }
+        
+        .view-details-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(26, 115, 232, 0.1);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .view-details-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.3);
         }
         
         /* Why Choose Us */
@@ -550,7 +636,7 @@
         }
         
         /* About, Services, Contact Page Headers */
-        .about-content h2, .services-content h2, .contact-content h2 {
+        .about-content h2, .services-content h2, .contact-content h2, .careers-content h2 {
             color: var(--dark-blue);
             margin-bottom: 30px;
             font-size: 2.5rem;
@@ -836,6 +922,70 @@
             box-shadow: 0 5px 15px rgba(26, 115, 232, 0.3);
         }
         
+        /* Careers Page */
+        .careers-content p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 60px;
+            background: linear-gradient(135deg, var(--light-blue), var(--white));
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .coming-soon i {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .coming-soon h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .benefit-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-blue);
+            transition: var(--transition);
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .benefit-item i {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item h4 {
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
         /* Contact Form */
         .contact-form {
             background-color: var(--white);
@@ -1092,7 +1242,7 @@
                 font-size: 1.2rem;
             }
             
-            .services-grid, .services-list, .image-grid, .features, .strengths-list {
+            .services-grid, .services-list, .image-grid, .features, .strengths-list, .benefits-list {
                 grid-template-columns: 1fr;
             }
             
@@ -1141,7 +1291,7 @@
                 padding: 50px 0;
             }
             
-            .intro h2, .why-choose-us h2, .about-content h2, .services-content h2, .contact-content h2 {
+            .intro h2, .why-choose-us h2, .about-content h2, .services-content h2, .contact-content h2, .careers-content h2 {
                 font-size: 2rem;
             }
             
@@ -1198,6 +1348,7 @@
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#careers" class="nav-link">Careers</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -1233,33 +1384,179 @@
             <div class="container">
                 <h2 style="text-align: center; margin: 50px 0 40px; font-size: 2.5rem; background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Our Key Services</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <!-- AI Solutions Card -->
+                    <div class="service-card" data-service="ai">
                         <div class="service-icon">
                             <i class="fas fa-robot"></i>
                         </div>
                         <h3>AI Solutions & Automation</h3>
                         <p>Intelligent systems that learn, adapt and automate business processes to drive efficiency and innovation across your organization.</p>
+                        <button class="view-details-btn" data-target="ai-services">
+                            <span>View Sub-Services</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
-                    <div class="service-card">
+                    
+                    <!-- Software Development Card -->
+                    <div class="service-card" data-service="software">
                         <div class="service-icon">
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <h3>Software Development</h3>
                         <p>Custom software solutions tailored to your specific business needs and challenges, built with modern frameworks and best practices.</p>
+                        <button class="view-details-btn" data-target="software-services">
+                            <span>View Sub-Services</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
-                    <div class="service-card">
+                    
+                    <!-- Cybersecurity Card -->
+                    <div class="service-card" data-service="cyber">
                         <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <h3>Cybersecurity Solutions</h3>
                         <p>Protecting your digital assets with advanced security protocols, monitoring systems, and comprehensive threat management.</p>
+                        <button class="view-details-btn" data-target="cyber-services">
+                            <span>View Sub-Services</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
-                    <div class="service-card">
+                    
+                    <!-- Cloud Solutions Card -->
+                    <div class="service-card" data-service="cloud">
                         <div class="service-icon">
                             <i class="fas fa-cloud"></i>
                         </div>
                         <h3>Cloud Solutions</h3>
                         <p>Scalable cloud infrastructure and migration services to enhance flexibility, reliability, and operational efficiency.</p>
+                        <button class="view-details-btn" data-target="cloud-services">
+                            <span>View Sub-Services</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Service Expanders for Homepage -->
+                <div class="service-expanders" style="margin-top: 40px;">
+                    <!-- AI Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="ai-services">
+                            <h4><i class="fas fa-robot"></i> AI Solutions & Automation - Sub Services</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="ai-services">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-comments"></i>
+                                    <span>AI Chatbot Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Machine Learning Solutions</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>AI Data Analytics</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Business Process Automation</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span>Workflow Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Software Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="software-services">
+                            <h4><i class="fas fa-laptop-code"></i> Software Development - Sub Services</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="software-services">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Web Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile App Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>IT Consulting</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-palette"></i>
+                                    <span>UI/UX Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cybersecurity Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="cyber-services">
+                            <h4><i class="fas fa-shield-alt"></i> Cybersecurity Solutions - Sub Services</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="cyber-services">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-network-wired"></i>
+                                    <span>Network Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Application Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>Data Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-user-shield"></i>
+                                    <span>Identity & Access Management (IAM)</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-search"></i>
+                                    <span>Vulnerability Assessment & Penetration Testing (VAPT)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cloud Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="cloud-services">
+                            <h4><i class="fas fa-cloud"></i> Cloud Solutions - Sub Services</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="cloud-services">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Cloud Consulting</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Cloud Migration Services</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-tools"></i>
+                                    <span>DevOps & CI/CD Automation</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Cloud Monitoring & Optimization</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1319,6 +1616,7 @@
         </section>
 
         <section id="about-page" class="page">
+            <!-- About page content remains the same -->
             <div class="container about-content">
                 <h2>About CorelytlQ</h2>
                 
@@ -1409,41 +1707,145 @@
                     </div>
                 </div>
                 
-                <div class="services-list">
-                    <div class="service-item">
-                        <h3><i class="fas fa-brain"></i> AI Solutions & Automation</h3>
-                        <p>Implement intelligent systems that automate processes, analyze data, and provide actionable insights. Our AI solutions include machine learning models, natural language processing, and predictive analytics to optimize business operations and drive innovation.</p>
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="AI & Machine Learning" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+                <div class="service-expanders">
+                    <!-- AI Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="services-ai">
+                            <h4><i class="fas fa-robot"></i> AI Solutions & Automation</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="services-ai">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-comments"></i>
+                                    <span>AI Chatbot Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Machine Learning Solutions</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>AI Data Analytics</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Business Process Automation</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span>Workflow Automation</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 10px;">
+                                <p style="color: var(--medium-gray); font-size: 1.1rem; line-height: 1.7;">
+                                    <strong>Our AI Solutions:</strong> We implement intelligent systems that automate processes, analyze data, and provide actionable insights. Our AI solutions include machine learning models, natural language processing, and predictive analytics to optimize business operations and drive innovation.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-code"></i> Software Development</h3>
-                        <p>Custom software solutions designed to address your unique business challenges. We develop scalable applications using modern frameworks and best practices in software engineering, ensuring robust performance and maintainability.</p>
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Software Development" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+                    
+                    <!-- Software Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="services-software">
+                            <h4><i class="fas fa-laptop-code"></i> Software Development</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="services-software">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Web Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile App Development</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>IT Consulting</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-palette"></i>
+                                    <span>UI/UX Design</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 10px;">
+                                <p style="color: var(--medium-gray); font-size: 1.1rem; line-height: 1.7;">
+                                    <strong>Custom Software Solutions:</strong> Tailored applications designed to address your unique business challenges. We develop scalable solutions using modern frameworks and best practices in software engineering, ensuring robust performance and maintainability.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-globe"></i> Web Development</h3>
-                        <p>Responsive, user-friendly websites and web applications that deliver exceptional user experiences. We create both frontend interfaces and backend systems using cutting-edge technologies like React, Angular, Vue.js, Node.js, and more.</p>
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Web Development" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+                    
+                    <!-- Cybersecurity Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="services-cyber">
+                            <h4><i class="fas fa-shield-alt"></i> Cybersecurity Solutions</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="services-cyber">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-network-wired"></i>
+                                    <span>Network Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Application Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>Data Security</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-user-shield"></i>
+                                    <span>Identity & Access Management (IAM)</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-search"></i>
+                                    <span>Vulnerability Assessment & Penetration Testing (VAPT)</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 10px;">
+                                <p style="color: var(--medium-gray); font-size: 1.1rem; line-height: 1.7;">
+                                    <strong>Comprehensive Security:</strong> Protecting your digital assets with advanced security protocols, monitoring systems, and comprehensive threat management. Our services include vulnerability assessment, threat monitoring, penetration testing, and implementation of security frameworks.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-mobile-alt"></i> Mobile App Development</h3>
-                        <p>Native and cross-platform mobile applications for iOS and Android. We build apps that are intuitive, performant, and aligned with your business objectives, using technologies like Flutter, React Native, Swift, and Kotlin.</p>
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Mobile Applications" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
-                    </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
-                        <p>Cloud migration, infrastructure setup, and management services. We help businesses leverage AWS, Azure, and Google Cloud for scalability, reliability, and cost-efficiency, with optimized architecture and security.</p>
-                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Cloud Computing" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
-                    </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-chart-line"></i> IT Consulting</h3>
-                        <p>Strategic guidance to align technology with business goals. Our consulting services include digital transformation, technology roadmap development, and IT infrastructure assessment to maximize your technology investment.</p>
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="IT Consulting" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
-                    </div>
-                    <div class="service-item">
-                        <h3><i class="fas fa-shield-alt"></i> Cybersecurity Solutions</h3>
-                        <p>Comprehensive security services including vulnerability assessment, threat monitoring, penetration testing, and implementation of security frameworks to protect your digital assets and ensure regulatory compliance.</p>
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Cybersecurity" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-top: 15px;">
+                    
+                    <!-- Cloud Services Expander -->
+                    <div class="service-expander">
+                        <div class="expander-header" data-expander="services-cloud">
+                            <h4><i class="fas fa-cloud"></i> Cloud Solutions</h4>
+                            <i class="fas fa-chevron-down expander-icon"></i>
+                        </div>
+                        <div class="expander-content" id="services-cloud">
+                            <div class="services-sub-list">
+                                <div class="service-sub-item">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Cloud Consulting</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Cloud Migration Services</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-tools"></i>
+                                    <span>DevOps & CI/CD Automation</span>
+                                </div>
+                                <div class="service-sub-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Cloud Monitoring & Optimization</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 10px;">
+                                <p style="color: var(--medium-gray); font-size: 1.1rem; line-height: 1.7;">
+                                    <strong>Cloud Infrastructure:</strong> Scalable cloud migration, infrastructure setup, and management services. We help businesses leverage AWS, Azure, and Google Cloud for scalability, reliability, and cost-efficiency, with optimized architecture and security.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1474,7 +1876,57 @@
             </div>
         </section>
 
+        <section id="careers-page" class="page">
+            <div class="container careers-content">
+                <h2>Careers at CorelytlQ</h2>
+                
+                <!-- Careers Banner -->
+                <div class="content-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+                    <div style="background: rgba(26, 115, 232, 0.7); padding: 20px 40px; border-radius: 15px;">
+                        Join Our Innovative Team
+                    </div>
+                </div>
+                
+                <p>At CorelytlQ, we're always looking for talented individuals who are passionate about technology and innovation. Join us in creating cutting-edge solutions that transform businesses and drive digital transformation.</p>
+                
+                <div class="coming-soon">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Career Opportunities Coming Soon</h3>
+                    <p style="max-width: 600px; margin: 0 auto; color: var(--medium-gray);">We're currently building our careers portal. Check back soon for exciting job opportunities in software development, AI engineering, cybersecurity, cloud architecture, and more.</p>
+                    <p style="margin-top: 20px; color: var(--primary-blue); font-weight: 600;">
+                        <i class="fas fa-envelope"></i> 
+                        Interested candidates can email resumes to: 
+                        <a href="mailto:careers@corelytlq.com" style="color: var(--primary-blue); text-decoration: underline;">careers@corelytlq.com</a>
+                    </p>
+                </div>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Learning & Development</h4>
+                        <p>Continuous learning opportunities, training programs, and certifications to help you grow professionally.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Collaborative Environment</h4>
+                        <p>Work with talented professionals in an innovative, supportive, and collaborative workplace.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Career Growth</h4>
+                        <p>Clear career paths and opportunities for advancement within our growing organization.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-heart"></i>
+                        <h4>Work-Life Balance</h4>
+                        <p>Flexible work arrangements and policies that support a healthy work-life balance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact-page" class="page">
+            <!-- Contact page content remains the same -->
             <div class="container contact-content">
                 <h2>Contact Us</h2>
                 
@@ -1657,107 +2109,127 @@
             });
         });
         
-        // Contact Form Submission with Formspree
+        // Service Expander Functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Handle expander headers
+            const expanderHeaders = document.querySelectorAll('.expander-header');
+            
+            expanderHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-expander');
+                    const expanderContent = document.getElementById(targetId);
+                    const expanderIcon = this.querySelector('.expander-icon');
+                    
+                    // Toggle active class
+                    expanderContent.classList.toggle('active');
+                    
+                    // Rotate icon
+                    if (expanderContent.classList.contains('active')) {
+                        expanderIcon.style.transform = 'rotate(180deg)';
+                    } else {
+                        expanderIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+            
+            // Handle view details buttons
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const targetId = this.getAttribute('data-target');
+                    const expanderContent = document.getElementById(targetId);
+                    const expanderHeader = document.querySelector(`[data-expander="${targetId}"]`);
+                    const expanderIcon = expanderHeader.querySelector('.expander-icon');
+                    
+                    // Scroll to the expander
+                    expanderHeader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Open the expander
+                    expanderContent.classList.add('active');
+                    expanderIcon.style.transform = 'rotate(180deg)';
+                    
+                    // Highlight the expander briefly
+                    expanderHeader.style.backgroundColor = 'rgba(26, 115, 232, 0.15)';
+                    setTimeout(() => {
+                        expanderHeader.style.backgroundColor = '';
+                    }, 1000);
+                });
+            });
+            
+            // Contact Form Submission
             const contactForm = document.getElementById('contactForm');
             const formMessage = document.getElementById('form-message');
             
-            if (!contactForm) return;
-            
-            // Show message function
-            function showMessage(text, isSuccess = true) {
-                formMessage.innerHTML = isSuccess 
-                    ? `<i class="fas fa-check-circle"></i> ${text}`
-                    : `<i class="fas fa-exclamation-circle"></i> ${text}`;
-                
-                formMessage.style.backgroundColor = isSuccess 
-                    ? 'rgba(15, 157, 88, 0.1)' 
-                    : 'rgba(234, 67, 53, 0.1)';
-                formMessage.style.color = isSuccess 
-                    ? 'var(--accent-green)' 
-                    : 'var(--accent-red)';
-                formMessage.style.border = `1px solid ${isSuccess ? 'var(--accent-green)' : 'var(--accent-red)'}`;
-                formMessage.style.display = 'block';
-                
-                // Auto-hide success messages after 5 seconds
-                if (isSuccess) {
-                    setTimeout(() => {
-                        formMessage.style.display = 'none';
-                    }, 5000);
+            if (contactForm) {
+                function showMessage(text, isSuccess = true) {
+                    formMessage.innerHTML = isSuccess 
+                        ? `<i class="fas fa-check-circle"></i> ${text}`
+                        : `<i class="fas fa-exclamation-circle"></i> ${text}`;
+                    
+                    formMessage.style.backgroundColor = isSuccess 
+                        ? 'rgba(15, 157, 88, 0.1)' 
+                        : 'rgba(234, 67, 53, 0.1)';
+                    formMessage.style.color = isSuccess 
+                        ? 'var(--accent-green)' 
+                        : 'var(--accent-red)';
+                    formMessage.style.border = `1px solid ${isSuccess ? 'var(--accent-green)' : 'var(--accent-red)'}`;
+                    formMessage.style.display = 'block';
+                    
+                    if (isSuccess) {
+                        setTimeout(() => {
+                            formMessage.style.display = 'none';
+                        }, 5000);
+                    }
                 }
+                
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const submitBtn = contactForm.querySelector('.submit-btn');
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const btnLoader = submitBtn.querySelector('.btn-loader');
+                    const originalText = btnText.textContent;
+                    
+                    btnText.style.display = 'none';
+                    btnLoader.style.display = 'inline-block';
+                    submitBtn.disabled = true;
+                    formMessage.style.display = 'none';
+                    
+                    try {
+                        const formData = new FormData(contactForm);
+                        
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.ok || response.ok) {
+                            showMessage('Thank you! Your message has been sent successfully. We will respond within 24 hours.', true);
+                            contactForm.reset();
+                        } else {
+                            showMessage(`Error: ${data.error || 'Please try again.'}`, false);
+                        }
+                        
+                    } catch (error) {
+                        showMessage('Network error. Please check your connection and try again.', false);
+                        console.error('Form submission error:', error);
+                    } finally {
+                        btnText.style.display = 'inline-block';
+                        btnText.textContent = originalText;
+                        btnLoader.style.display = 'none';
+                        submitBtn.disabled = false;
+                    }
+                });
             }
             
-            // Handle form submission
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const submitBtn = contactForm.querySelector('.submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const btnLoader = submitBtn.querySelector('.btn-loader');
-                const originalText = btnText.textContent;
-                
-                // Show loading state
-                btnText.style.display = 'none';
-                btnLoader.style.display = 'inline-block';
-                submitBtn.disabled = true;
-                
-                // Hide any previous messages
-                formMessage.style.display = 'none';
-                
-                try {
-                    const formData = new FormData(contactForm);
-                    
-                    // Send to Formspree
-                    const response = await fetch(contactForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (data.ok || response.ok) {
-                        // Success
-                        showMessage('Thank you! Your message has been sent successfully. We will respond within 24 hours.', true);
-                        contactForm.reset();
-                        
-                        // Optional: You could redirect to a thank you page
-                        // window.location.href = "/thank-you.html";
-                    } else {
-                        // Error from Formspree
-                        showMessage(`Error: ${data.error || 'Please try again.'}`, false);
-                    }
-                    
-                } catch (error) {
-                    // Network error
-                    showMessage('Network error. Please check your connection and try again.', false);
-                    console.error('Form submission error:', error);
-                } finally {
-                    // Restore button
-                    btnText.style.display = 'inline-block';
-                    btnText.textContent = originalText;
-                    btnLoader.style.display = 'none';
-                    submitBtn.disabled = false;
-                }
-            });
-            
-            // Add some CSS for the message box
-            const style = document.createElement('style');
-            style.textContent = `
-                #form-message i {
-                    margin-right: 8px;
-                }
-                .btn-loader i {
-                    margin-right: 8px;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-        
-        // Handle page load with hash
-        window.addEventListener('DOMContentLoaded', () => {
+            // Handle page load with hash
             const hash = window.location.hash.substring(1) || 'home';
             const targetPage = document.getElementById(`${hash}-page`);
             const targetLink = document.querySelector(`.nav-link[href="#${hash}"]`);
@@ -1768,42 +2240,22 @@
                 targetPage.classList.add('active');
                 targetLink.classList.add('active');
             }
-        });
-        
-        // Logo click handler
-        const logoLink = document.querySelector('.logo');
-        logoLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById('home-page').classList.add('active');
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
-            document.querySelector('.nav-link[href="#home"]').classList.add('active');
-            window.scrollTo(0, 0);
-        });
-        
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            
+            // Logo click handler
+            const logoLink = document.querySelector('.logo');
+            logoLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById('home-page').classList.add('active');
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                document.querySelector('.nav-link[href="#home"]').classList.add('active');
+                window.scrollTo(0, 0);
             });
-        });
-        
-        // Image loading optimization
-        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Image loading optimization
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.loading = 'lazy';
-                // Add error handling for logo images
                 if (img.src.includes('logo.png')) {
                     img.addEventListener('error', function() {
                         this.style.display = 'none';
@@ -1815,6 +2267,9 @@
                 }
             });
         });
+        
+        // Touch support for service items
+        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
 </html>
